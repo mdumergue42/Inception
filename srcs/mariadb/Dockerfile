@@ -10,6 +10,6 @@ COPY source dest
 
 RUN command
 
-EXPOSE 3336
+EXPOSE 3306
 
 CMD [ "executable" ]

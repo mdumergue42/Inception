@@ -5,7 +5,7 @@ services:
         volumes:
             - mariadb:/var/lib/mysql
         expose:
-            - "3336"
+            - "3306"
     nginx:
         container_name: inception-nginx
         build: ./nginx
