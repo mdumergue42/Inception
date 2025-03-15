@@ -10,6 +10,6 @@ COPY source dest
 
 RUN command
 
-EXPOSE port
+EXPOSE 3336
 
 CMD [ "executable" ]

@@ -1,15 +1,15 @@
 FROM debian:bullseye
 
-RUN apt update && apt install -y
+RUN apt intall
 
 COPY source dest
 
-WORKDIR /the/workdir/path
+WORKDIR /var/www/html
 
 COPY source dest
 
 RUN command
 
-EXPOSE port
+EXPOSE 443
 
 CMD [ "executable" ]

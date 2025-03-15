@@ -1,0 +1,35 @@
+services:
+    mariadb:
+        container_name: inception-mariadb
+        build: ./mariadb
+        volumes:
+            - mariadb:/var/lib/mysql
+        expose:
+            - "3336"
+    nginx:
+        container_name: inception-nginx
+        build: ./nginx
+        volumes:
+            - nginx:/var/www/html
+        expose:
+            - "443:443"
+    wordpress:
+        container_name: inception-wordpress
+        volumes:
+            - wordpress:/var/www/html
+        build: ./wordpress
+        expose:
+            - "9000"
+volumes:
+    mariadb:
+        driver: local
+        driver_opts:
+            type: none
+            device: ${DATA_DIR}/mariadb
+            o: bind
+    wordpress:
+        driver: local
+        driver_opts:
+            type: none
+            device: ${DATA_DIR}/wordpress
+            o: bind
