@@ -1,15 +1,18 @@
 FROM debian:bullseye
 
-RUN apt update && apt install -y
+RUN apt update && apt install -y nginx openssl \
+    && ln -sf /dev/stdout /var/log/nginx/access.log \ 
+    && ln -sf /dev/stderr /var/log/nginx/error.log
+#2 der l pour debug
 
-COPY source dest
+COPY nginx.conf /etc/nginx/http.d
 
-WORKDIR /the/workdir/path
+COPY script.sh /entrypoint
 
-COPY source dest
-
-RUN command
+RUN chmod +x /entrypoint
 
 EXPOSE 443
 
-CMD [ "executable" ]
+ENTRYPOINT ["/entrypoint"]
+
+CMD ["nginx", "-g", "daemon off;"]

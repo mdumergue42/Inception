@@ -4,22 +4,31 @@ services:
         build: ./mariadb
         volumes:
             - mariadb:/var/lib/mysql
-        expose:
-            - "3306"
+        networks:
+            - inception
+        restart: unless-stopped
     nginx:
         container_name: inception-nginx
         build: ./nginx
         volumes:
             - nginx:/var/www/html
-        expose:
+        ports:
             - "443:443"
+        networks:
+            - inception
+        restart: unless-stopped
     wordpress:
         container_name: inception-wordpress
         volumes:
             - wordpress:/var/www/html
+        depends_on:
+            - mariadb
         build: ./wordpress
-        expose:
-            - "9000"
+        networks:
+            - inception
+        env_file:
+            - .env
+        restart: unless-stopped
 volumes:
     mariadb:
         driver: local
@@ -33,3 +42,6 @@ volumes:
             type: none
             device: ${DATA_DIR}/wordpress
             o: bind
+networks:
+  inception:
+    name: inception
