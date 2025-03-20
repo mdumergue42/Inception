@@ -1,9 +1,6 @@
 FROM debian:bullseye
 
-RUN apt update && apt install -y nginx openssl \
-    && ln -sf /dev/stdout /var/log/nginx/access.log \ 
-    && ln -sf /dev/stderr /var/log/nginx/error.log
-#2 der l pour debug
+RUN apt update && apt install -y nginx openssl
 
 COPY nginx.conf /etc/nginx/http.d
 

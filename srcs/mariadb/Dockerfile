@@ -1,15 +1,15 @@
 FROM debian:bullseye
 
-RUN apt update && apt install -y
+RUN apt update && apt install -y mariadb-server mariadb-client gettext-base
 
-COPY source dest
+COPY maria.conf /etc/mysql/mariadb.conf.d/50-server.cnf
 
-WORKDIR /the/workdir/path
+COPY script.sh /entrypoint
 
-COPY source dest
-
-RUN command
+RUN chmod +x /entrypoint
 
 EXPOSE 3306
 
-CMD [ "executable" ]
+ENTRYPOINT ["/entrypoint"]
+
+CMD [ "mysqld" ]
