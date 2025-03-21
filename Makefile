@@ -16,7 +16,7 @@ stop:
 status:
 	@docker ps
 fclean : down
-	@rm -rf ~/data/
+	@sudo rm -rf ~/data/
 	@docker system prune -af
 	@docker volume prune -af
 
