@@ -6,6 +6,9 @@ services:
             - mariadb:/var/lib/mysql
         networks:
             - inception
+        environments:
+          - DB_USER=${DB_USER}
+          - DB_PASS=${DB_PASS}
         restart: unless-stopped
     nginx:
         container_name: inception-nginx
@@ -13,7 +16,7 @@ services:
         volumes:
             - wordpress:/var/www/html
         ports:
-            - "443:443"
+            - "8443:8443"
         networks:
             - inception
         restart: unless-stopped
