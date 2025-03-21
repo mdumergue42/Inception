@@ -6,7 +6,7 @@ services:
             - mariadb:/var/lib/mysql
         networks:
             - inception
-        environments:
+        environment:
           - DB_USER=${DB_USER}
           - DB_PASS=${DB_PASS}
         restart: unless-stopped
@@ -16,7 +16,7 @@ services:
         volumes:
             - wordpress:/var/www/html
         ports:
-            - "8443:8443"
+            - "443:443"
         networks:
             - inception
         restart: unless-stopped
@@ -34,17 +34,17 @@ services:
         restart: unless-stopped
 volumes:
     mariadb:
-        driver: local
-        driver_opts:
-            type: none
-            device: ${DATA_DIR}/mariadb
-            o: bind
+      driver: local
+      driver_opts:
+        type: none
+        device: ${DATA_DIR}/mariadb
+        o: bind
     wordpress:
-        driver: local
-        driver_opts:
-            type: none
-            device: ${DATA_DIR}/wordpress
-            o: bind
+      driver: local
+      driver_opts:
+        type: none
+        device: ${DATA_DIR}/wordpress
+        o: bind
 networks:
   inception:
     name: inception

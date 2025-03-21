@@ -14,9 +14,9 @@ else
     #allow-root obliger de le mettre car cmd executer en root
 wp --allow-root config create --dbname=${WP_DBNAME} --dbuser=${DB_USER} --dbpass=${DB_PASS} --dbhost=${DB_HOST}
 #init
-wp --allow-root core install --url=${WP_URL} --title="${WP_TITLE}" --admin_user=${WP_USER} --admin_password=${WP_PASS} --admin_email=${WP_ADMIN_MAIL}
+wp --allow-root core install --url=${WP_URL} --title="${WP_TITLE}" --admin_user=${WP_ADMIN} --admin_password=${WP_ADMIN_PASS} --admin_email=${WP_ADMIN_MAIL}
 #init
-wp --allow-root user create ${WP_USER} ${WP_USER_MAIL} --role=${WP_USER_ROLE} --user_pass=${WP_PASS}
+wp --allow-root user create ${WP_USER} ${WP_USER_MAIL} --role=${WP_USER_ROLE} --user_pass=${WP_USER_PASS}
 #init
 fi
 

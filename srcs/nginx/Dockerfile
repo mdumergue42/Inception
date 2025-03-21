@@ -1,8 +1,10 @@
 FROM debian:bullseye
 
-RUN apt update && apt install -y nginx openssl
+RUN apt update && apt install -y nginx openssl \
+	&& ln -sf /dev/stdout /var/log/nginx/access.log \
+	&& ln -sf /dev/stderr /var/log/nginx/error.log
 
-COPY nginx.conf /etc/nginx/http.d
+COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 COPY script.sh /entrypoint
 
