@@ -1,6 +1,6 @@
 services:
     mariadb:
-        container_name: inception-mariadb
+        container_name: mariadb
         build: ./mariadb
         volumes:
             - mariadb:/var/lib/mysql
@@ -11,7 +11,7 @@ services:
           - DB_PASS=${DB_PASS}
         restart: unless-stopped
     nginx:
-        container_name: inception-nginx
+        container_name: nginx
         build: ./nginx
         volumes:
             - wordpress:/var/www/html
@@ -21,7 +21,7 @@ services:
             - inception
         restart: unless-stopped
     wordpress:
-        container_name: inception-wordpress
+        container_name: wordpress
         volumes:
             - wordpress:/var/www/html
         depends_on:
