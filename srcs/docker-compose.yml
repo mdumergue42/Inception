@@ -18,7 +18,7 @@ services:
         ports:
             - "443:443"
         depends_on:
-        	- wordpress 
+            - wordpress 
         networks:
             - inception
         restart: unless-stopped
