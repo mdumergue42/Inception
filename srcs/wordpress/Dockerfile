@@ -2,7 +2,7 @@ FROM debian:bullseye
 #creer un VM sous debian
 
 RUN apt update \
-    && apt install -y curl php7.4 php-fpm php-mysqli \
+    && apt install -y curl php7.4 php-fpm php-mysqli mailutils \
     && curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
     && chmod +x wp-cli.phar \
     && mv wp-cli.phar /usr/local/bin/wp
